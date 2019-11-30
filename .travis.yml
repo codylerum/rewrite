@@ -1,7 +1,7 @@
 language: java
 cache:
   directories:
-    - '$HOME/.m2/repository'
+    - $HOME/.m2
 script:
   - mvn -P ${CONTAINER} install
 after_success:
@@ -9,15 +9,15 @@ after_success:
 matrix:
   include:
     - env: CONTAINER=JBOSS_AS_MANAGED_7.X
-      jdk: openjdk7
+      jdk: openjdk8
     - env: CONTAINER=WILDFLY_MANAGED_8
-      jdk: oraclejdk8
+      jdk: openjdk8
     - env: CONTAINER=GLASSFISH_MANAGED_3.1
-      jdk: openjdk7
+      jdk: openjdk8
     - env: CONTAINER=GLASSFISH_MANAGED_4.0
-      jdk: oraclejdk8
+      jdk: openjdk8
     - env: CONTAINER=TOMEE_MANAGED_1.5
-      jdk: openjdk7
+      jdk: openjdk8
   allow_failures:
     - env: CONTAINER=TOMEE_MANAGED_1.5
 notifications:
